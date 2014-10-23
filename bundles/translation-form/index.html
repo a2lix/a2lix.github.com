@@ -104,14 +104,14 @@ new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
 # app/config/config.yml
 a2lix_translation_form:
     locales: [fr, es, de]       # [1]
-    required_locales: [fr]      # [2]
+    default_required: true     # [2]
     manager_registry: doctrine      # [3]
     templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
 {% endhighlight %}
 
                 <ul>
                     <li>[1] Locales of translations</li>
-                    <li>[2] Empty by default</li>
+                    <li>[2] true by default</li>
                     <li>[3] Default to 'doctrine'</li>
                     <li>[4] The default template is Twitter Bootstrap compatible. You can redefine your own template</li>
                 </ul>
