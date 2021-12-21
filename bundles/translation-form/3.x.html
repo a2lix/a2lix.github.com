@@ -152,30 +152,36 @@ use A2lix\TranslationFormBundle\Form\Type\TranslationsType;
 ...
 $builder->add('translations', TranslationsType::class, [
     'locales' => ['en', 'fr', 'es', 'de'],   // [1]
-    'default_locale' => ['en']               // [1]
+    'default_locale' => ['en'],              // [1]
     'required_locales' => ['fr'],            // [1]
     'fields' => [                               // [2]
         'description' => [                         // [3.a]
             'field_type' => 'textarea',                // [4]
             'label' => 'descript.',                    // [4]
             'locale_options' => [                  // [3.b]
-                'es' => ['label' => 'descripción']     // [4]
+                'es' => ['label' => 'descripción'],    // [4]
                 'fr' => ['display' => false]           // [4]
             ]
         ]
     ],
-    'excluded_fields' => ['details']            // [2]
+    'excluded_fields' => ['details'],           // [2]
+    'locale_labels' => [                        // [5]
+        'fr' => 'Français',
+        'en' => 'English',
+    ],
 ]);
 {% endhighlight %}
 
                 <ul>
-                    <li>[1] Optionnal. If set, override the default value from config.yml</li>
-                    <li>[2] Optionnal. If set, override the default value from config.yml</li>
-                    <li>[3] Optionnal. If set, override the auto configuration of fields</li>
-                    <li>[3.a] Optionnal. - For a field, applied to all locales</li>
-                    <li>[3.b] Optionnal. - For a specific locale of a field</li>
-                    <li>[4] Optionnal. Common options of symfony forms (max_length, required, trim, read_only, constraints, ...),
+                    <li>[1] Optional. If set, override the default value from config.yml</li>
+                    <li>[2] Optional. If set, override the default value from config.yml</li>
+                    <li>[3] Optional. If set, override the auto configuration of fields</li>
+                    <li>[3.a] Optional. - For a field, applied to all locales</li>
+                    <li>[3.b] Optional. - For a specific locale of a field</li>
+                    <li>[4] Optional. Common options of symfony forms (max_length, required, trim, read_only, constraints, ...),
                         which was added 'field_type' and 'display'</li>
+                    <li>[5] Optional. Set the labels for the translation tabs. Default to the name of the locale. Translation keys
+                        can be used here.</li>
                 </ul>
             </section>
 
@@ -202,9 +208,9 @@ $builder->add('translations', TranslationsFormsType::class, [
 {% endhighlight %}
 
                 <ul>
-                    <li>[1] Optionnal. If set, override the default value from config.yml</li>
+                    <li>[1] Optional. If set, override the default value from config.yml</li>
                     <li>[2] Mandatory. A real form type that you have to do</li>
-                    <li>[2bis] Optionnal. - An array of options that you can set to your form</li>
+                    <li>[2bis] Optional. - An array of options that you can set to your form</li>
                 </ul>
 
                 <h4>TranslatedEntityType</h4>
